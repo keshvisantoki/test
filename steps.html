@@ -1,0 +1,66 @@
+command list that i used to create project
+
+
+composer global require laravel/installer
+
+composer create-project --prefer-dist laravel/laravel blog
+
+create database and change in .env file 
+
+
+Open 2014_10_12_000000_create_users_table.php file from /database/migrations folder. Adding all columns and migrate database
+
+php artisan migrate
+
+
+php artisan make:seeder CreateUsersSeeder
+
+create seeder for adding admin and user data 
+
+php artisan db:seed --class=CreateUsersSeeder
+
+open user model and add all filed data in fillable 
+
+
+below 3 command is used for laravel ui 
+
+composer require laravel/ui
+php artisan ui bootstrap --auth
+npm install && npm run dev
+
+
+We need a middleware which allows the protected routes access only for admin.
+
+php artisan make:middleware IsAdmin
+
+
+adding this in kernel.php
+
+protected $routeMiddleware = [
+      //…
+      'is_admin' => \App\Http\Middleware\IsAdmin::class,
+];
+
+
+Adding route in web.php
+
+Update LoginController File
+
+Add Method To HomeController
+
+Create Layout Files
+	home.blade.php = user
+	admin-home.blade.php  = admin
+
+
+Download & Install Yajra Datatables package
+
+	composer require yajra/laravel-datatables-oracle
+
+Create Controller
+
+	php artisan make:controller UserController --resource
+
+update admin-home.blade.php, web.php
+
+php artisan serve
